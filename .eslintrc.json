@@ -1,5 +1,7 @@
 {
 
-   "extends": "@silvermine/eslint-config/node"
-
+   "extends": "@silvermine/eslint-config/node",
+   "rules": {
+      "linebreak-style":"off"
+   }
 }

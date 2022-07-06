@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('underscore'),
+var { each } = require('underscore'),
     events = require('../events'),
     qualityOptionFactory = require('./QualityOption'),
     QUALITY_CHANGE_CLASS = 'vjs-quality-changing';
@@ -64,7 +64,7 @@ module.exports = function(videojs) {
 
          if (this.selectedSrc !== src) {
             this.selectedSrc = src;
-            _.each(this.items, function(item) {
+            each(this.items, function(item) {
                item.selected(item.source.src === src);
             });
          }

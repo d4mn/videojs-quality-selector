@@ -53,7 +53,7 @@
     "video.js": ">=6.0.0"
   },
   "dependencies": {
-    "class.extend": "0.9.2",
+    "class.extend": "github:kontrollanten/class.extend",
     "underscore": "1.13.1"
   }
 }

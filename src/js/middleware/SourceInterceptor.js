@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('underscore'),
+var { isEqual, find } = require('underscore'),
     events = require('../events');
 
 module.exports = function(videojs) {
@@ -17,7 +17,7 @@ module.exports = function(videojs) {
                player._qualitySelectorSafeSeek.onPlayerSourcesChange();
             }
 
-            if (!_.isEqual(sources, player._qualitySelectorPreviousSources)) {
+            if (isEqual(sources, player._qualitySelectorPreviousSources)) {
                player.trigger(events.PLAYER_SOURCES_CHANGED, sources);
                player._qualitySelectorPreviousSources = sources;
             }
@@ -28,7 +28,7 @@ module.exports = function(videojs) {
             // either the `<source>` tag or the list of sources passed to
             // videojs using `src()`.
 
-            userSelectedSource = _.find(sources, function(source) {
+            userSelectedSource = find(sources, function(source) {
                // Must check for boolean values as well as either the string 'true' or
                // 'selected'. When sources are set programmatically, the value will be a
                // boolean, but those coming from a `<source>` tag will be a string.

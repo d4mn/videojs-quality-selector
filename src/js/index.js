@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('underscore'),
+var { each, findWhere } = require('underscore'),
     events = require('./events'),
     qualitySelectorFactory = require('./components/QualitySelector'),
     sourceInterceptorFactory = require('./middleware/SourceInterceptor'),
@@ -21,11 +21,11 @@ module.exports = function(videojs) {
              selectedSource;
 
          // Clear out any previously selected sources (see: #11)
-         _.each(sources, function(source) {
+         each(sources, function(source) {
             source.selected = false;
          });
 
-         selectedSource = _.findWhere(sources, { src: newSource.src });
+         selectedSource = findWhere(sources, { src: newSource.src });
          // Note: `_.findWhere` returns a reference to an object. Thus the
          // following updates the original object in `sources`.
          selectedSource.selected = true;
